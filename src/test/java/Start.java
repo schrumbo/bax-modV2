@@ -16,8 +16,9 @@ import net.minecraft.client.main.Main;
 public class Start {
     public static void main(String[] args) {
         // Provide natives
-        // Currently supported Linux and Windows
-        System.setProperty("org.lwjgl.librarypath", new File("../test_natives/" + (System.getProperty("os.name").startsWith("Windows") ? "windows" : "linux")).getAbsolutePath());
+        String osName = System.getProperty("os.name").toLowerCase();
+        String os = osName.startsWith("windows") ? "windows" : osName.startsWith("mac") ? "macosx" : "linux";
+        System.setProperty("org.lwjgl.librarypath", new File("../test_natives/" + os).getAbsolutePath());
 
         Main.main(concat(new String[]{"--version", "MavenMCP", "--accessToken", "0", "--assetsDir", "assets", "--assetIndex", "1.8", "--userProperties", "{}"}, args));
     }
