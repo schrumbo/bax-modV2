@@ -7,7 +7,8 @@ import bax.module.ModuleInfo;
 @ModuleInfo(
         name = "Flight",
         description = "lets u fly",
-        category = Category.MOVEMENT
+        category = Category.MOVEMENT,
+        enabled = true
 )
 public class Flight extends Module {
     @Override

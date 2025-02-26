@@ -18,6 +18,13 @@ public class RenderUtil {
         Gui.drawRect(x, y, x + w, y + h, color);
     }
 
+
+    public static void drawHollowRect(int x ,int y, int w, int h, int lineW, int color){
+        Gui.drawRect(x, y, x + w, y + lineW, color);
+        Gui.drawRect(x + w, y, x+ lineW, y + h + 1, color);
+        Gui.drawRect(x, y, x + lineW, y + h, color);
+        Gui.drawRect(x, y + h, x + w, y + h, color);
+    }
 }
 
 
