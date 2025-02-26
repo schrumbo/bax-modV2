@@ -1,5 +1,7 @@
 package net.minecraft.client.entity;
 
+import bax.Bax;
+import bax.event.EventUpdate;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.MovingSoundMinecartRiding;
 import net.minecraft.client.audio.PositionedSoundRecord;
@@ -169,6 +171,11 @@ public class EntityPlayerSP extends AbstractClientPlayer
     {
         if (this.worldObj.isBlockLoaded(new BlockPos(this.posX, 0.0D, this.posZ)))
         {
+            //Bax START
+            Bax.BUS.post(new EventUpdate());
+            //Bax END
+
+
             super.onUpdate();
 
             if (this.isRiding())

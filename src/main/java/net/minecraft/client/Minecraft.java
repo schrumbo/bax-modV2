@@ -1,5 +1,7 @@
 package net.minecraft.client;
 
+import bax.Bax;
+import bax.event.EventKey;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -568,6 +570,10 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         this.checkGLError("Post startup");
         this.ingameGUI = new GuiIngame(this);
 
+        //BAX START
+        Bax.INSTANCE.init();
+        //BAX END
+
         if (this.serverName != null)
         {
             this.displayGuiScreen(new GuiConnecting(new GuiMainMenu(), this, this.serverName, this.serverPort));
@@ -1050,6 +1056,10 @@ public class Minecraft implements IThreadListener, IPlayerUsage
     {
         try
         {
+            //BAX START
+            Bax.INSTANCE.shutdown();
+            //BAX END
+
             this.stream.shutdownStream();
             logger.info("Stopping!");
 
@@ -1943,6 +1953,10 @@ public class Minecraft implements IThreadListener, IPlayerUsage
                     }
                     else
                     {
+                        //BAX START
+                        Bax.BUS.post(new EventKey(k));
+                        //BAX END
+
                         if (k == 1)
                         {
                             this.displayInGameMenu();

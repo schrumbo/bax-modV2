@@ -1,5 +1,7 @@
 package net.minecraft.client.gui;
 
+import bax.Bax;
+import bax.event.Event2D;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -356,6 +358,9 @@ public class GuiIngame extends Gui
             this.overlayPlayerList.updatePlayerList(true);
             this.overlayPlayerList.renderPlayerlist(i, scoreboard, scoreobjective1);
         }
+        //BAX START
+        Bax.BUS.post(new Event2D(scaledresolution));
+        //BAX END
 
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         GlStateManager.disableLighting();
