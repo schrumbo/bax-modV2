@@ -4,6 +4,7 @@ import bax.module.Category;
 import bax.module.Module;
 import bax.module.ModuleInfo;
 import bax.module.impl.render.clickGUI.ClickGUIScreen;
+import bax.module.impl.render.customModMenu.CustomModMenu;
 import net.minecraft.client.gui.ScaledResolution;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
@@ -30,7 +31,7 @@ public class UI extends Module {
     @Override
     public void onKey(int key) {
         if (key ==Keyboard.KEY_RSHIFT){
-            mc.displayGuiScreen(new ClickGUIScreen());
+            mc.displayGuiScreen(new CustomModMenu());
         }
     }
 }
